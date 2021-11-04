@@ -4,14 +4,14 @@ const playerData = {
     name:"satoshi",
     hp:105,
     attack: 9,
-    defence:1
+    defence: 1
 };
 
 const venomData = {
     name:"Akuma",
     hp:100,
     attack:9,
-    defence:1
+    defence: 1
 };
 
 //htmlに表示させる処理
@@ -45,6 +45,7 @@ insertText("venomMax_hp",venomData["hp"]);
 
 //アタックボタンクリック時にCurrent_hpが-10ずつ減る処理
 document.getElementById("attack").addEventListener('click', function(){
+    //ゲームが終わったら処理が走る発火用false
     let endGame = false;
 
     //攻撃ダメージを定義
@@ -63,13 +64,15 @@ document.getElementById("attack").addEventListener('click', function(){
         alert("勝利です!");
         endGame = true;
 
-        venomData == 0;
+        //hpが0またはマイナスになったら0を返す処理
+        venomData["hp"] = 0;
         insertText("venomCurrent_hp",venomData["hp"]);
     }else if (playerData["hp"] <= 0 ){
         alert("敗北です！");
         endGame = true;
 
-        playerData == 0;
+        //hpが0またはマイナスになったら0を返す処理
+        playerData["hp"] = 0;
         insertText("playerCurrent_hp",playerData["hp"]);
     }
 
